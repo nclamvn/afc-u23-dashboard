@@ -156,10 +156,14 @@ export default function Sidebar({ onClose }: SidebarProps) {
           {/* Close button - Mobile only */}
           {onClose && (
             <button
-              onClick={onClose}
-              className="lg:hidden ml-2 w-8 h-8 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white/70 transition-all"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onClose();
+              }}
+              className="lg:hidden ml-2 w-10 h-10 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/[0.1] flex items-center justify-center text-white/60 hover:text-white active:scale-95 transition-all z-50"
             >
-              <X size={16} />
+              <X size={18} />
             </button>
           )}
         </div>
@@ -242,6 +246,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
                     <Link
                       key={child.href}
                       href={child.href}
+                      onClick={onClose}
                       className={cn(
                         'flex items-center gap-2.5 px-3 py-2.5 text-[13px] transition-all duration-300 rounded-xl',
                         isActive(child.href)
@@ -278,6 +283,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={onClose}
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 text-[13px] transition-all duration-300 rounded-xl',
                   isActive(item.href)
