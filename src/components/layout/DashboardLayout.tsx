@@ -42,17 +42,17 @@ export default function DashboardLayout({ children, breadcrumbs }: DashboardLayo
         />
       )}
 
-      {/* Sidebar - Hidden on mobile, slide in when open */}
+      {/* Sidebar - Fixed position always */}
       <div className={`
-        fixed lg:relative z-40 lg:z-20
+        fixed z-40 top-0 left-0 h-screen
         transform transition-transform duration-300 ease-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         <Sidebar onClose={() => setSidebarOpen(false)} />
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 lg:ml-64 relative z-10 w-full">
+      {/* Main Content - with left margin for sidebar on desktop */}
+      <div className="flex-1 ml-0 lg:ml-64 relative z-10 w-full min-h-screen">
         <Header
           breadcrumbs={breadcrumbs}
           onMenuClick={() => setSidebarOpen(true)}

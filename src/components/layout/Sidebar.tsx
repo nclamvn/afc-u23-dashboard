@@ -12,48 +12,55 @@ import {
   Trophy,
   X
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@/lib/utils';
 
-// Premium Glass Modal Component
+// Premium Glass Modal Component - Renders via portal to document.body
 function AboutModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  if (!isOpen) return null;
+  const [mounted, setMounted] = useState(false);
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center">
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!isOpen || !mounted) return null;
+
+  const modalContent = (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/70 backdrop-blur-md"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative z-10 animate-modal-in">
+      <div className="relative z-10 animate-modal-in mx-4">
         {/* Glass container */}
-        <div className="relative px-16 py-12 rounded-3xl overflow-hidden">
+        <div className="relative px-10 md:px-16 py-10 md:py-12 rounded-3xl overflow-hidden">
           {/* Multi-layer glass effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] backdrop-blur-3xl" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.1] via-white/[0.05] to-white/[0.02] backdrop-blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
           {/* Border glow */}
-          <div className="absolute inset-0 rounded-3xl border border-white/[0.1]" />
-          <div className="absolute inset-[1px] rounded-3xl border border-white/[0.05]" />
+          <div className="absolute inset-0 rounded-3xl border border-white/[0.15]" />
+          <div className="absolute inset-[1px] rounded-3xl border border-white/[0.08]" />
 
           {/* Subtle accent glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-[#ff6b6b]/30 to-transparent" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-[#ff6b6b]/40 to-transparent" />
 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white/70 transition-all duration-300"
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/[0.08] hover:bg-white/[0.15] border border-white/[0.1] flex items-center justify-center text-white/50 hover:text-white transition-all duration-300"
           >
             <X size={14} />
           </button>
 
           {/* Content */}
           <div className="relative z-10 text-center">
-            <p className="text-[15px] font-light tracking-[0.4em] text-white/90">
+            <p className="text-sm md:text-[15px] font-light tracking-[0.3em] md:tracking-[0.4em] text-white/90">
               V I B E C O D E &nbsp; K I T &nbsp; V 4
             </p>
           </div>
@@ -61,6 +68,8 @@ function AboutModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }
 
 interface NavItem {
@@ -117,7 +126,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   return (
-    <aside className="w-64 h-screen fixed left-0 top-0 z-50 flex flex-col">
+    <aside className="w-64 h-screen flex flex-col">
       {/* Premium glass background */}
       <div className="absolute inset-0 bg-[#0a0808]/90 backdrop-blur-3xl border-r border-white/[0.04]" />
 
@@ -333,7 +342,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
         </div>
       </div>
 
-      {/* About Modal */}
+      {/* About Modal - Rendered via portal to document.body */}
       <AboutModal isOpen={showAboutModal} onClose={() => setShowAboutModal(false)} />
     </aside>
   );
