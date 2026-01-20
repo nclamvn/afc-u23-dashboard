@@ -97,7 +97,11 @@ const bottomNav = [
   { label: 'About', href: '#about', icon: <Info size={18} /> },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname();
   const [expandedSections, setExpandedSections] = useState<string[]>(['Semifinal']);
   const [showAboutModal, setShowAboutModal] = useState(false);
@@ -127,10 +131,11 @@ export default function Sidebar() {
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full">
         {/* Logo/Brand - Premium Glass Style */}
-        <div className="p-5">
+        <div className="p-5 flex items-center justify-between">
           <Link
             href="/"
-            className="group relative flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+            onClick={onClose}
+            className="group relative flex-1 flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02]"
           >
             {/* Glass background */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/[0.1] rounded-2xl" />
@@ -147,6 +152,16 @@ export default function Sidebar() {
               AFC U23 2026
             </span>
           </Link>
+
+          {/* Close button - Mobile only */}
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="lg:hidden ml-2 w-8 h-8 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white/70 transition-all"
+            >
+              <X size={16} />
+            </button>
+          )}
         </div>
 
         {/* Floating Flags Section - Refined */}

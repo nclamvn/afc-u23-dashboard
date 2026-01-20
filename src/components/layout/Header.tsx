@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronRight, Search, ArrowLeft } from 'lucide-react';
+import { ChevronRight, Search, ArrowLeft, Menu } from 'lucide-react';
 
 interface BreadcrumbItem {
   label: string;
@@ -12,9 +12,11 @@ interface HeaderProps {
   breadcrumbs: BreadcrumbItem[];
   showBackButton?: boolean;
   backHref?: string;
+  onMenuClick?: () => void;
+  showMenuButton?: boolean;
 }
 
-export default function Header({ breadcrumbs, showBackButton, backHref = '/' }: HeaderProps) {
+export default function Header({ breadcrumbs, showBackButton, backHref = '/', onMenuClick, showMenuButton }: HeaderProps) {
   return (
     <header className="h-14 sticky top-0 z-40">
       {/* Ultra transparent glass background */}
@@ -27,8 +29,18 @@ export default function Header({ breadcrumbs, showBackButton, backHref = '/' }: 
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
 
       {/* Content */}
-      <div className="relative h-full flex items-center justify-between px-6">
-        <div className="flex items-center gap-4">
+      <div className="relative h-full flex items-center justify-between px-4 md:px-6">
+        <div className="flex items-center gap-3 md:gap-4">
+          {/* Mobile Menu Button */}
+          {showMenuButton && (
+            <button
+              onClick={onMenuClick}
+              className="lg:hidden flex items-center justify-center w-9 h-9 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] text-white/60 hover:text-white/90 transition-all duration-300"
+            >
+              <Menu size={18} />
+            </button>
+          )}
+
           {showBackButton && (
             <Link
               href={backHref}
@@ -38,8 +50,8 @@ export default function Header({ breadcrumbs, showBackButton, backHref = '/' }: 
             </Link>
           )}
 
-          {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2">
+          {/* Breadcrumbs - Hide on very small screens */}
+          <nav className="hidden sm:flex items-center gap-2">
             {breadcrumbs.map((item, index) => (
               <div key={index} className="flex items-center gap-2">
                 {index > 0 && (
@@ -58,9 +70,14 @@ export default function Header({ breadcrumbs, showBackButton, backHref = '/' }: 
               </div>
             ))}
           </nav>
+
+          {/* Mobile: Show only current page */}
+          <span className="sm:hidden text-[13px] text-white/80 font-medium">
+            {breadcrumbs[breadcrumbs.length - 1]?.label}
+          </span>
         </div>
 
-        {/* Search - More transparent */}
+        {/* Search - Responsive */}
         <div className="flex items-center gap-3">
           <div className="relative group">
             <Search
@@ -69,10 +86,10 @@ export default function Header({ breadcrumbs, showBackButton, backHref = '/' }: 
             />
             <input
               type="text"
-              placeholder="Search players..."
-              className="w-64 bg-white/[0.02] hover:bg-white/[0.04] focus:bg-white/[0.05] border border-white/[0.04] focus:border-white/[0.08] backdrop-blur-xl rounded-xl pl-9 pr-4 py-2 text-[13px] text-white/80 placeholder-white/25 focus:outline-none transition-all duration-300"
+              placeholder="Search..."
+              className="w-32 sm:w-48 md:w-64 bg-white/[0.02] hover:bg-white/[0.04] focus:bg-white/[0.05] border border-white/[0.04] focus:border-white/[0.08] backdrop-blur-xl rounded-xl pl-9 pr-3 md:pr-4 py-2 text-[13px] text-white/80 placeholder-white/25 focus:outline-none transition-all duration-300"
             />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-0.5">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-0.5">
               <kbd className="px-1.5 py-0.5 text-[9px] font-medium text-white/20 bg-white/[0.02] rounded border border-white/[0.04]">
                 ⌘
               </kbd>

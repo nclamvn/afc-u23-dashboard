@@ -42,42 +42,42 @@ export default function H2HPage() {
       ]}
     >
       {/* H2H Header */}
-      <div className="stat-card p-8 mb-6">
-        <div className="flex items-center justify-between">
+      <div className="stat-card p-4 md:p-8 mb-4 md:mb-6">
+        <div className="flex items-center justify-between gap-2 md:gap-4">
           {/* Vietnam */}
-          <div className="text-center">
-            <div className="w-24 h-24 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#da251d]/20 to-[#ffcd00]/20 flex items-center justify-center border border-white/10">
-              <span className="text-5xl">🇻🇳</span>
+          <div className="text-center flex-1">
+            <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-[#da251d]/20 to-[#ffcd00]/20 flex items-center justify-center border border-white/10">
+              <span className="text-3xl md:text-5xl">🇻🇳</span>
             </div>
-            <h2 className="text-2xl font-bold text-white">Vietnam U23</h2>
-            <p className="text-white/40">{vietnamCoach.formation}</p>
+            <h2 className="text-sm md:text-2xl font-bold text-white">Vietnam U23</h2>
+            <p className="text-white/40 text-xs md:text-base">{vietnamCoach.formation}</p>
           </div>
 
           {/* VS */}
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <Swords size={40} className="text-[#ff6b35]" />
+          <div className="text-center px-2 md:px-4">
+            <div className="flex items-center justify-center mb-2 md:mb-4">
+              <Swords size={24} className="md:w-10 md:h-10 text-[#ff6b35]" />
             </div>
-            <div className="text-4xl font-bold text-white">VS</div>
-            <p className="text-white/60 mt-2">Semifinal</p>
-            <p className="text-white/40 text-sm">20/01/2026 - 22:30</p>
+            <div className="text-xl md:text-4xl font-bold text-white">VS</div>
+            <p className="text-white/60 text-xs md:text-base mt-1 md:mt-2">Semifinal</p>
+            <p className="text-white/40 text-[10px] md:text-sm hidden sm:block">20/01/2026 - 22:30</p>
           </div>
 
           {/* China */}
-          <div className="text-center">
-            <div className="w-24 h-24 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#de2910]/20 to-[#ffde00]/20 flex items-center justify-center border border-white/10">
-              <span className="text-5xl">🇨🇳</span>
+          <div className="text-center flex-1">
+            <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-[#de2910]/20 to-[#ffde00]/20 flex items-center justify-center border border-white/10">
+              <span className="text-3xl md:text-5xl">🇨🇳</span>
             </div>
-            <h2 className="text-2xl font-bold text-white">China U23</h2>
-            <p className="text-white/40">{chinaCoach.formation}</p>
+            <h2 className="text-sm md:text-2xl font-bold text-white">China U23</h2>
+            <p className="text-white/40 text-xs md:text-base">{chinaCoach.formation}</p>
           </div>
         </div>
       </div>
 
       {/* Stats Comparison */}
-      <div className="stat-card p-6 mb-6">
-        <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-          <TrendingUp size={20} className="text-[#ff6b35]" />
+      <div className="stat-card p-4 md:p-6 mb-4 md:mb-6">
+        <h2 className="text-base md:text-lg font-semibold text-white mb-4 md:mb-6 flex items-center gap-2">
+          <TrendingUp size={18} className="text-[#ff6b35]" />
           Statistics Comparison
         </h2>
 
@@ -139,7 +139,7 @@ export default function H2HPage() {
       </div>
 
       {/* Coaches Comparison */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
         <StatCard title="Vietnam Coach">
           <div className="flex items-center gap-4">
             <PlayerImage
@@ -178,7 +178,7 @@ export default function H2HPage() {
       </div>
 
       {/* Key Players */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
         <StatCard title="Vietnam Key Players">
           <div className="space-y-3">
             {vnTopPlayers.map((player, index) => (
@@ -238,22 +238,22 @@ interface ComparisonBarProps {
 
 function ComparisonBar({ label, leftValue, rightValue, leftPercent, rightPercent }: ComparisonBarProps) {
   return (
-    <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+    <div className="grid grid-cols-[1fr_auto_1fr] gap-2 md:gap-4 items-center">
       <div className="text-right">
-        <div className="text-white font-medium">{leftValue}</div>
-        <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden mt-1">
+        <div className="text-white font-medium text-xs md:text-base">{leftValue}</div>
+        <div className="h-1.5 md:h-2 bg-white/[0.05] rounded-full overflow-hidden mt-1">
           <div
             className="h-full bg-gradient-to-r from-[#ff6b35] to-[#ff4444] rounded-full float-right"
             style={{ width: `${leftPercent}%` }}
           />
         </div>
       </div>
-      <div className="text-center text-sm text-white/40 min-w-[120px]">
+      <div className="text-center text-[10px] md:text-sm text-white/40 min-w-[60px] md:min-w-[120px]">
         {label}
       </div>
       <div className="text-left">
-        <div className="text-white font-medium">{rightValue}</div>
-        <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden mt-1">
+        <div className="text-white font-medium text-xs md:text-base">{rightValue}</div>
+        <div className="h-1.5 md:h-2 bg-white/[0.05] rounded-full overflow-hidden mt-1">
           <div
             className="h-full bg-gradient-to-r from-[#ff375f] to-[#dc143c] rounded-full"
             style={{ width: `${rightPercent}%` }}

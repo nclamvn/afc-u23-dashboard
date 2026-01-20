@@ -19,22 +19,22 @@ export default function VietnamTeamPage() {
       ]}
     >
       {/* Team Header */}
-      <div className="stat-card p-6 mb-6">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#da251d]/20 to-[#ffcd00]/20 flex items-center justify-center border border-white/10">
-              <span className="text-5xl">🇻🇳</span>
+      <div className="stat-card p-4 md:p-6 mb-4 md:mb-6">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br from-[#da251d]/20 to-[#ffcd00]/20 flex items-center justify-center border border-white/10">
+              <span className="text-3xl md:text-5xl">🇻🇳</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">VIETNAM U23</h1>
-              <p className="text-white/60">
+              <h1 className="text-lg md:text-2xl font-bold text-white">VIETNAM U23</h1>
+              <p className="text-white/60 text-xs md:text-base">
                 AFC U23 Asian Cup 2026 - Semifinal
               </p>
-              <div className="flex items-center gap-4 mt-2 text-sm">
+              <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-1 md:mt-2 text-xs md:text-sm">
                 <span className="text-white/40">
-                  Formation: <span className="text-white font-medium">{vietnamCoach.formation}</span>
+                  <span className="text-white font-medium">{vietnamCoach.formation}</span>
                 </span>
-                <span className="text-white/40">
+                <span className="text-white/40 hidden sm:inline">
                   Style: <span className="text-white font-medium">{vietnamCoach.style}</span>
                 </span>
               </div>
@@ -42,74 +42,74 @@ export default function VietnamTeamPage() {
           </div>
 
           {/* Team Stats */}
-          <div className="flex gap-6">
-            <div className="text-center px-4 py-2 rounded-xl bg-white/[0.03]">
-              <div className="text-2xl font-bold text-[#30d158]">4</div>
-              <div className="text-xs text-white/40">Wins</div>
+          <div className="grid grid-cols-4 gap-2 md:flex md:gap-4 lg:gap-6">
+            <div className="text-center px-2 md:px-4 py-2 rounded-lg md:rounded-xl bg-white/[0.03]">
+              <div className="text-lg md:text-2xl font-bold text-[#30d158]">4</div>
+              <div className="text-[10px] md:text-xs text-white/40">Wins</div>
             </div>
-            <div className="text-center px-4 py-2 rounded-xl bg-white/[0.03]">
-              <div className="text-2xl font-bold text-[#ffd60a]">0</div>
-              <div className="text-xs text-white/40">Draws</div>
+            <div className="text-center px-2 md:px-4 py-2 rounded-lg md:rounded-xl bg-white/[0.03]">
+              <div className="text-lg md:text-2xl font-bold text-[#ffd60a]">0</div>
+              <div className="text-[10px] md:text-xs text-white/40">Draws</div>
             </div>
-            <div className="text-center px-4 py-2 rounded-xl bg-white/[0.03]">
-              <div className="text-2xl font-bold text-[#ff375f]">0</div>
-              <div className="text-xs text-white/40">Losses</div>
+            <div className="text-center px-2 md:px-4 py-2 rounded-lg md:rounded-xl bg-white/[0.03]">
+              <div className="text-lg md:text-2xl font-bold text-[#ff375f]">0</div>
+              <div className="text-[10px] md:text-xs text-white/40">Losses</div>
             </div>
-            <div className="text-center px-4 py-2 rounded-xl bg-white/[0.03]">
-              <div className="text-2xl font-bold text-[#ff6b35]">12</div>
-              <div className="text-xs text-white/40">Goals</div>
+            <div className="text-center px-2 md:px-4 py-2 rounded-lg md:rounded-xl bg-white/[0.03]">
+              <div className="text-lg md:text-2xl font-bold text-[#ff6b35]">12</div>
+              <div className="text-[10px] md:text-xs text-white/40">Goals</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Coach Section */}
-      <div className="stat-card p-6 mb-6">
-        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-          <Users size={20} className="text-[#ff6b35]" />
+      <div className="stat-card p-4 md:p-6 mb-4 md:mb-6">
+        <h2 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4 flex items-center gap-2">
+          <Users size={18} className="text-[#ff6b35]" />
           Head Coach
         </h2>
-        <div className="flex items-start gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
           <PlayerImage
             name={vietnamCoach.name}
-            size={100}
-            className="w-24 h-24 rounded-2xl"
+            size={80}
+            className="w-20 h-20 md:w-24 md:h-24 rounded-xl md:rounded-2xl"
           />
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1">
-              <h3 className="text-xl font-bold text-white">{vietnamCoach.name}</h3>
+          <div className="flex-1 text-center sm:text-left w-full">
+            <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+              <h3 className="text-lg md:text-xl font-bold text-white">{vietnamCoach.name}</h3>
               <span className="text-lg">{vietnamCoach.flag}</span>
             </div>
-            <p className="text-white/60 text-sm mb-3">
+            <p className="text-white/60 text-xs md:text-sm mb-3">
               {vietnamCoach.nationality} | Age: {vietnamCoach.age}
             </p>
 
-            <div className="grid grid-cols-4 gap-4 mb-4">
-              <div className="info-box text-center">
-                <div className="info-box-label">Win Rate</div>
-                <div className="info-box-value text-[#30d158]">{vietnamCoach.winRate}</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-3 md:mb-4">
+              <div className="info-box text-center p-2 md:p-4">
+                <div className="info-box-label text-[9px] md:text-[11px]">Win Rate</div>
+                <div className="info-box-value text-sm md:text-base text-[#30d158]">{vietnamCoach.winRate}</div>
               </div>
-              <div className="info-box text-center">
-                <div className="info-box-label">Matches</div>
-                <div className="info-box-value">{vietnamCoach.totalMatches}</div>
+              <div className="info-box text-center p-2 md:p-4">
+                <div className="info-box-label text-[9px] md:text-[11px]">Matches</div>
+                <div className="info-box-value text-sm md:text-base">{vietnamCoach.totalMatches}</div>
               </div>
-              <div className="info-box text-center">
-                <div className="info-box-label">U23 Win</div>
-                <div className="info-box-value text-[#30d158]">{vietnamCoach.u23WinRate}</div>
+              <div className="info-box text-center p-2 md:p-4">
+                <div className="info-box-label text-[9px] md:text-[11px]">U23 Win</div>
+                <div className="info-box-value text-sm md:text-base text-[#30d158]">{vietnamCoach.u23WinRate}</div>
               </div>
-              <div className="info-box text-center">
-                <div className="info-box-label">Clean Sheets</div>
-                <div className="info-box-value">{vietnamCoach.cleanSheets}</div>
+              <div className="info-box text-center p-2 md:p-4">
+                <div className="info-box-label text-[9px] md:text-[11px]">Clean Sheets</div>
+                <div className="info-box-value text-sm md:text-base">{vietnamCoach.cleanSheets}</div>
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center sm:justify-start gap-2">
               {vietnamCoach.achievements.map((achievement, index) => (
                 <span
                   key={index}
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#ff6b35]/15 text-[#ff6b35] text-xs font-medium border border-[#ff6b35]/20"
+                  className="inline-flex items-center gap-1 px-2 md:px-3 py-1 rounded-full bg-[#ff6b35]/15 text-[#ff6b35] text-[10px] md:text-xs font-medium border border-[#ff6b35]/20"
                 >
-                  <Trophy size={12} />
+                  <Trophy size={10} />
                   {achievement}
                 </span>
               ))}
@@ -119,16 +119,16 @@ export default function VietnamTeamPage() {
       </div>
 
       {/* Players Grid */}
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         {/* Goalkeepers */}
         {goalkeepers.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <Shield size={20} className="text-[#30d158]" />
+            <h2 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4 flex items-center gap-2">
+              <Shield size={18} className="text-[#30d158]" />
               Goalkeepers
-              <span className="text-sm font-normal text-white/40 ml-2">({goalkeepers.length})</span>
+              <span className="text-xs md:text-sm font-normal text-white/40 ml-1">({goalkeepers.length})</span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-4">
               {goalkeepers.map((player) => (
                 <PlayerCard key={player.id} player={player} team="vietnam" />
               ))}
@@ -139,12 +139,12 @@ export default function VietnamTeamPage() {
         {/* Defenders */}
         {defenders.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <Shield size={20} className="text-[#0a84ff]" />
+            <h2 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4 flex items-center gap-2">
+              <Shield size={18} className="text-[#0a84ff]" />
               Defenders
-              <span className="text-sm font-normal text-white/40 ml-2">({defenders.length})</span>
+              <span className="text-xs md:text-sm font-normal text-white/40 ml-1">({defenders.length})</span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-4">
               {defenders.map((player) => (
                 <PlayerCard key={player.id} player={player} team="vietnam" />
               ))}
@@ -155,12 +155,12 @@ export default function VietnamTeamPage() {
         {/* Midfielders */}
         {midfielders.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <Target size={20} className="text-[#bf5af2]" />
+            <h2 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4 flex items-center gap-2">
+              <Target size={18} className="text-[#bf5af2]" />
               Midfielders
-              <span className="text-sm font-normal text-white/40 ml-2">({midfielders.length})</span>
+              <span className="text-xs md:text-sm font-normal text-white/40 ml-1">({midfielders.length})</span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-4">
               {midfielders.map((player) => (
                 <PlayerCard key={player.id} player={player} team="vietnam" />
               ))}
@@ -171,12 +171,12 @@ export default function VietnamTeamPage() {
         {/* Forwards */}
         {forwards.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <Target size={20} className="text-[#ff375f]" />
+            <h2 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4 flex items-center gap-2">
+              <Target size={18} className="text-[#ff375f]" />
               Forwards
-              <span className="text-sm font-normal text-white/40 ml-2">({forwards.length})</span>
+              <span className="text-xs md:text-sm font-normal text-white/40 ml-1">({forwards.length})</span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 md:gap-4">
               {forwards.map((player) => (
                 <PlayerCard key={player.id} player={player} team="vietnam" />
               ))}
